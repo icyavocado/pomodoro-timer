@@ -1,0 +1,123 @@
+:root {
+  color-scheme: light dark;
+}
+
+[data-theme="light"] {
+  --main-bg-color: white;
+  --main-fg-color: black;
+}
+
+[data-theme="dark"] {
+  --main-bg-color: black;
+  --main-fg-color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--main-bg-color);
+  color: var(--main-fg-color);
+  width: 100vw;
+  height: 100vh;
+  -webkit-transition: background-color 400ms linear;
+  -ms-transition: background-color 400ms linear;
+  transition: background-color 400ms linear;
+}
+
+.jetbrains-mono-countdown {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--main-fg-color);
+}
+
+[data-theme-toggle] {
+  user-select: none;
+  cursor: pointer;
+  ;
+}
+
+header>nav>ul {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+header>nav>ul>li {
+  cursor: pointer;
+  list-style: none;
+  color: var(--main-fg-color);
+  padding: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 3.3125rem);
+  margin-top: -2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+}
+
+.container .box {
+  width: 3.75rem;
+  height: 3.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.container .display {
+  font-size: 8rem;
+}
+
+.prevent-select {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.flash {
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% {
+    background: var(--main-fg-color);
+    color: var(--main-bg-color);
+  }
+
+  50% {
+    background: var(--main-bg-color);
+    color: var(--main-fg-color);
+  }
+
+  100% {
+    background: var(--main-fg-color);
+    color: var(--main-bg-color);
+  }
+}

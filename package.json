@@ -1,0 +1,15 @@
+{
+  "name": "countdown",
+  "version": "0.0.0",
+  "description": "a website that count down",
+  "main": "index.js",
+  "scripts": {
+    "test": "ls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "countdown"
+  },
+  "author": "",
+  "license": "ISC"
+}
