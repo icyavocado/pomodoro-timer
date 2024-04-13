@@ -23,9 +23,9 @@ body {
   color: var(--main-fg-color);
   width: 100vw;
   height: 100vh;
-  -webkit-transition: background-color 400ms linear;
-  -ms-transition: background-color 400ms linear;
-  transition: background-color 400ms linear;
+  -webkit-transition: background-color 17ms linear;
+  -ms-transition: background-color 17ms linear;
+  transition: background-color 17ms linear;
 }
 
 .jetbrains-mono-countdown {
@@ -90,6 +90,8 @@ main {
 
 .container .display {
   font-size: 8rem;
+  user-select: none;
+  cursor: pointer;
 }
 
 .prevent-select {

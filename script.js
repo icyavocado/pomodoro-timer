@@ -1,5 +1,5 @@
 let countdown;
-let countdownTime = 120; // 2 minutes in seconds
+let countdownTime = 5;
 let isPaused = false;
 let clickCount = 0;
 let holdTimeout;
@@ -20,11 +20,15 @@ function startCountdown() {
       countdownTime--;
       updateDisplay();
       if (countdownTime <= 0) {
-        clearInterval(countdown);
+        clearTimeout(countdown);
         countdownTime = 0;
       }
     }
   }, 1000);
+}
+
+function setCountDownTime(newTime) {
+  resetCountdown(newTime)
 }
 
 function updateDisplay() {
@@ -46,7 +50,7 @@ function updateDisplay() {
   }
 
   if (flashFrames === 0 && display.classList.contains('flash')) {
-    display.classList.remove('flash');
+    setTimeout(() => display.classList.remove('flash'), 1200);
   }
 
   if (swipeDirection !== 0) {
@@ -82,25 +86,31 @@ display.addEventListener('mouseup', () => {
 });
 
 addTime.addEventListener('click', () => {
-  countdownTime += Number(addTime.innerText) * 60; // add 1 minute
-  updateDisplay();
+  countdownTime += Number(addTime.innerText) * 60;
+  setCountDownTime(countdownTime);
 });
 
 subtractTime.addEventListener('click', () => {
-  countdownTime = Math.max(0, countdownTime + Number(subtractTime.innerText) * 60); // subtract 1 minute, but don't go below 0
-  updateDisplay();
+  countdownTime = Math.max(0, countdownTime + Number(subtractTime.innerText) * 60);
+  setCountDownTime(countdownTime);
 });
 
-function resetCountdown() {
-  countdownTime = 120;
+function resetCountdown(time) {
+  countdownTime = time || 120;
   isPaused = false;
   clearInterval(countdown);
   startCountdown();
 }
 
 function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
-  if (localStorageTheme !== null) return localStorageTheme;
-  if (systemSettingDark.matches) return "dark";
+  if (localStorageTheme !== null) {
+    return localStorageTheme;
+  }
+
+  if (systemSettingDark.matches) {
+    return "dark";
+  }
+
   return "light";
 }
 
@@ -133,5 +143,4 @@ button.addEventListener("click", (event) => {
   currentThemeSetting = newTheme;
 });
 
-updateDisplay();
-startCountdown();
+setCountDownTime(countdownTime)
