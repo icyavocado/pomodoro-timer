@@ -43,6 +43,8 @@ const fontArrays = [{
   weight: '400'
 }];
 
+const DEFAULT_FONT_SLUG = 'anton';
+
 function loadFonts() {
   fontArrays.forEach(font => {
     const link = document.createElement('link');
@@ -63,7 +65,7 @@ function generateFontStyle(font) {
 
 function switchFont() {
   let currentFontSlug = localStorage.getItem('currentFont');
-  if (currentFontSlug === null) currentFont = "jetbrains-mono";
+  if (currentFontSlug === null) currentFont = DEFAULT_FONT_SLUG;
   const fontIndex = fontArrays.findIndex(font => font.slug === currentFontSlug);
   const nextFont = fontArrays[(fontIndex + 1) % fontArrays.length];
   setFont(nextFont);
@@ -74,7 +76,7 @@ function setFont(font) {
   const selectedFont = fontArrays.find(f => f.slug === font.slug);
   if (!selectedFont) return;
   let currentFontSlug = localStorage.getItem('currentFont');
-  if (!currentFontSlug) currentFontSlug = "jetbrains-mono";
+  if (!currentFontSlug) currentFontSlug = DEFAULT_FONT_SLUG;
   const currentFont = fontArrays.find(f => f.slug === currentFontSlug);
   document.body.classList.remove(`${currentFont.slug}-${currentFont.style}`);
   document.body.classList.add(`${selectedFont.slug}-${selectedFont.style}`);

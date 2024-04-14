@@ -5,7 +5,7 @@ import './addons/color-switcher.js';
 let countdown;
 
 // Pomodoro Timer
-let workTime = localStorage.getItem('workTime') || 15 * 60;
+let workTime = localStorage.getItem('workTime') || 25 * 60;
 let restTime = localStorage.getItem('restTime') || 5 * 60;
 let countdownTime = workTime;
 let isWorkTime = true;
@@ -41,7 +41,7 @@ function updateDisplay() {
     switchWorkStatus();
   }
 
-  status.textContent = isPaused ? 'Paused' : '⠀';
+  status.style.visibility = isPaused ? 'visible' : 'hidden';
 
   requestAnimationFrame(updateDisplay);
 }
@@ -67,16 +67,6 @@ display.addEventListener('mousedown', () => {
 
 display.addEventListener('mouseup', () => {
   clearTimeout(holdTimeout);
-});
-
-addTime.addEventListener('click', () => {
-  countdownTime += Number(addTime.innerText) * 60;
-  resetCountdown(countdownTime);
-});
-
-subtractTime.addEventListener('click', () => {
-  countdownTime = Math.max(0, countdownTime + Number(subtractTime.innerText) * 60);
-  resetCountdown(countdownTime);
 });
 
 function resetCountdown(time) {
