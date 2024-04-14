@@ -11,15 +11,34 @@ const fontArrays = [{
   style: 'normal',
   weight: '400'
 }, {
-  slug: 'pacifico',
-  name: 'Pacifico',
-  url: 'https://fonts.googleapis.com/css2?family=Pacifico&display=swap',
+  slug: 'josefin-sans',
+  name: 'Josefin Sans',
+  url: 'https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap',
   style: 'normal',
   weight: '400'
 }, {
-  slug: 'Sriracha',
-  name: 'Sriracha',
-  url: 'https://fonts.googleapis.com/css2?family=Sriracha&display=swap',
+  slug: 'anton',
+  name: 'Anton',
+  url: 'https://fonts.googleapis.com/css2?family=Anton&display=swap',
+  style: 'normal',
+  weight: '400'
+}, {
+
+  slug: 'roboto',
+  name: 'Roboto',
+  url: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+  style: 'normal',
+  weight: '400'
+}, {
+  slug: 'poppins',
+  name: 'Poppins',
+  url: 'https://fonts.googleapis.com/css2?family=Poppins&display=swap',
+  style: 'normal',
+  weight: '400'
+}, {
+  slug: 'nerko-one',
+  name: 'Nerko One',
+  url: 'https://fonts.googleapis.com/css2?family=Nerko+One&display=swap',
   style: 'normal',
   weight: '400'
 }];
