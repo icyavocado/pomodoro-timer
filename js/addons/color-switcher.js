@@ -34,7 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-fg]').value = localStorage.getItem('css-root--main-fg-color');
   }
 
-  console.log('DOMContentLoaded', document.querySelector('[data-fg]').value);
-
   updateColorScheme();
 });
