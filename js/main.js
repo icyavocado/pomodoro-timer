@@ -5,8 +5,8 @@ import './addons/color-switcher.js';
 let countdown;
 
 // Pomodoro Timer
-let workTime = localStorage.getItem('workTime') || 120;
-let restTime = localStorage.getItem('restTime') || 60;
+let workTime = localStorage.getItem('workTime') || 15 * 60;
+let restTime = localStorage.getItem('restTime') || 5 * 60;
 let countdownTime = workTime;
 let isWorkTime = true;
 let isPaused = false;
@@ -80,8 +80,8 @@ subtractTime.addEventListener('click', () => {
 });
 
 function resetCountdown(time) {
-  setWorkTime(localStorage.getItem('workTime'));
-  setRestTime(localStorage.getItem('restTime'));
+  setWorkTime(localStorage.getItem('workTime') || workTime);
+  setRestTime(localStorage.getItem('restTime') || restTime);
   countdownTime = time || (isWorkTime ? workTime : restTime);
   isPaused = false;
   clearInterval(countdown);
@@ -127,15 +127,25 @@ function setNextRestTime() {
 document.querySelector("[data-rest-time]").addEventListener('click', setNextRestTime);
 
 function setWorkTime(time) {
-  localStorage.setItem('workTime', time);
-  workTime = time;
+  if (typeof time === 'number') localStorage.setItem('workTime', time);
+  workTime = parseInt(time);
   document.querySelector("[data-work-time] .time-in-minute").textContent = `${time / 60} mins`;
 }
 
 function setRestTime(time) {
-  localStorage.setItem('restTime', time);
-  restTime = time;
+  if (typeof time === 'number') localStorage.setItem('restTime', time);
+  restTime = parseInt(time);
   document.querySelector("[data-rest-time] .time-in-minute").textContent = `${time / 60} mins`;
 }
+
+document.querySelector("[data-configuration] .label").addEventListener('mousedown', event => {
+  document.querySelector("[data-configuration]").classList.toggle('active');
+  document.querySelector("main").classList.toggle('blur');
+});
+
+document.querySelector("main").addEventListener('click', event => {
+  document.querySelector("[data-configuration]").classList.remove('active');
+  document.querySelector("main").classList.remove('blur');
+});
 
 resetCountdown(countdownTime);

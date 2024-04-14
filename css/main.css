@@ -35,7 +35,8 @@ nav>ul>li {
   opacity: 0.34;
 }
 
-nav>ul>li:hover {
+nav>ul>li:hover,
+nav>ul>li.active {
   transition: opacity 0.3s;
   opacity: 1;
 }
@@ -64,30 +65,16 @@ header>nav>ul>li[data-configuration]>.dropdown {
   display: none;
 }
 
-header>nav>ul>li[data-configuration]:hover>.dropdown {
+header>nav>ul>li[data-configuration]:hover>.dropdown,
+header>nav>ul>li[data-configuration].active>.dropdown {
   display: block;
   position: absolute;
+  z-index: 2;
+  width: 150%;
 }
 
-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
-
-header>nav>ul>li[data-configuration]:hover>.dropdown .square {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 0rem;
-  background: var(--main-bg-color);
-  color: var(--main-fg-color);
-}
-
-header>nav>ul>li[data-configuration]:hover>.dropdown>ul>li {
+header>nav>ul>li[data-configuration]:hover>.dropdown>ul>li,
+header>nav>ul>li[data-configuration].active>.dropdown>ul>li {
   cursor: pointer;
   list-style: none;
   color: var(--main-fg-color);
@@ -104,6 +91,10 @@ main {
   align-items: center;
   height: calc(100vh - 3.3125rem);
   margin-top: -2rem;
+}
+
+main.blur {
+  filter: blur(1.25rem);
 }
 
 .container {
@@ -150,4 +141,31 @@ main {
   /* IE 10 and IE 11 */
   user-select: none;
   /* Standard syntax */
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.color-picker input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.color-picker input[type="color"]::-webkit-color-swatch {
+  border-radius: 0px;
+  border: var(--main-bg-color) 1px solid;
+}
+
+.color-picker input[type="color"]::-moz-color-swatch {
+  border-radius: 0px;
+  border: var(--main-bg-color) 1px solid;
 }

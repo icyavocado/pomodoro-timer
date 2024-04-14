@@ -29,21 +29,15 @@
                 <small class="time-in-minute">Not sure</small>
               </li>
               <li class="prevent-select" data-font-switcher="" aria-label="Switching Between Fonts">
-                <label for="font-switcher">Font</label>
+                <div aria-label="Font Switcher">Font</div>
                 <small>
                   <label for="font-name" aria-label="Font Name"></label>
                 </small>
               </li>
-              <li class="prevent-select cursor-pointer">
-                <label for="color-picker">Colors</label>
-                <label for="BG">
-                  <small>Base</small>
-                  <input data-bg type="color" name="BG">
-                </label>
-                <label for="FG">
-                  <small>Compliment</small>
-                  <input data-fg type="color" name="FG">
-                </label>
+              <li class="prevent-select color-picker">
+                <span aria-label="Pick your own theme">Theme</span>
+                <input data-bg type="color" name="BG">
+                <input data-fg type="color" name="FG">
               </li>
             </ul>
           </div>

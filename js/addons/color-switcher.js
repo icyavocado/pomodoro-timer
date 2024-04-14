@@ -10,6 +10,9 @@ document.querySelector('[data-fg]').addEventListener('change', (event) => {
 
 function updateColorScheme() {
   const styleTheme = document.querySelector('style[data-color-style]');
+  document.querySelector('[data-bg]').value = localStorage.getItem('css-root--main-bg-color') || 'black';
+  document.querySelector('[data-fg]').value = localStorage.getItem('css-root--main-fg-color') || 'white';
+
   styleTheme.textContent = `
 [data-theme="light"] {
 --main-bg-color: ${localStorage.getItem('css-root--main-bg-color') || 'white'};
