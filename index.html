@@ -1,33 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: black">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Count Down</title>
+  <style data-font></style>
+  <style data-color-style></style>
 </head>
 
-<body class="jetbrains-mono-countdown" data-theme="light">
+<body data-theme="dark">
   <header>
     <nav>
       <ul>
-        <li aria-label="Update Configurations">
-          Configure
+        <li data-configuration aria-label="Update Configurations">
+          <div class="label">Configure</div>
           <div class="dropdown">
             <ul>
-              <li>1 hour</li>
-              <li>30 mins</li>
-              <li>Font</li>
-              <li>Color picker</li>
+              <li class="prevent-select" data-work-time>
+                <div aria-label="Work time in minute">Work Time</div>
+                <small class="time-in-minute">Not sure</small>
+              </li>
+              <li class="prevent-select" data-rest-time>
+                <div aria-label="Rest time in minute">Rest Time</div>
+                <small class="time-in-minute">Not sure</small>
+              </li>
+              <li class="prevent-select" data-font-switcher="" aria-label="Switching Between Fonts">
+                <label for="font-switcher">Font</label>
+                <small>
+                  <label for="font-name" aria-label="Font Name"></label>
+                </small>
+              </li>
+              <li class="prevent-select cursor-pointer">
+                <label for="color-picker">Colors</label>
+                <label for="BG">
+                  <small>Base</small>
+                  <input data-bg type="color" name="BG">
+                </label>
+                <label for="FG">
+                  <small>Compliment</small>
+                  <input data-fg type="color" name="FG">
+                </label>
+              </li>
             </ul>
           </div>
         </li>
-        <li data-theme-toggle aria-label="Change to light theme">Dark Mode</li>
+        <li data-theme-toggle aria-label="Change to light theme">
+          <div class="label">Dark Mode</div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -37,14 +60,14 @@
         <div class="box add prevent-select">
           +5
         </div>
-        <div class="display prevent-select">25:00</div>
+        <div class="display prevent-select">00:00</div>
         <div class="box remove prevent-select">
           -5
         </div>
       </div>
       <div class="status">⠀</div>
   </main>
-  <script src="script.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
